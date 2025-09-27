@@ -55,6 +55,28 @@
         #music-btn:hover {
             background: #444866;
         }
+
+        /* Iconos sociales (Telegram + Discord) */
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 12px; /* Espacio entre iconos */
+            z-index: 1000;
+        }
+
+        .social-icons img {
+            width: 36px;   /* Tamaño de icono */
+            height: 36px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -92,8 +114,18 @@
     <!-- Música oculta -->
     <audio id="bg-music" src="music/Isabel LaRosa - eyes don't lie (Audio).mp3" autoplay loop></audio>
 
-    <!-- Botón -->
+    <!-- Botón de música -->
     <button id="music-btn">⏸️ Pausa</button>
+
+    <!-- Iconos sociales -->
+    <div class="social-icons">
+        <a href="https://t.me/D4NN4D" target="_blank">
+            <img src="https://ik.imagekit.io/utcwokv5j/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.webp?updatedAt=1758941147630" alt="Telegram">
+        </a>
+        <a href="https://discordapp.com/users/_daniel7w7" target="_blank">
+            <img src="https://ik.imagekit.io/utcwokv5j/discord-logo-discord-logo-transparent-discord-icon-transparent-free-free-png.webp?updatedAt=1758941140986" alt="Discord">
+        </a>
+    </div>
 
     <script>
         const music = document.getElementById('bg-music');
