@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        
         *{
             margin: 0;
             padding: 0;
@@ -23,7 +22,6 @@
                 #25283b22 100px 101px
             );
         }
-        
         body::before{
             position: absolute;
             width: min(1400px, 90vw);
@@ -38,11 +36,31 @@
             background-position: top center;
             pointer-events: none;
         }
+
+        /* Botón de música */
+        #music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 18px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #25283B;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+        #music-btn:hover {
+            background: #444866;
+        }
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Tu banner -->
     <div class="banner">
         <div class="slider" style="--quantity: 10">
             <div class="item" style="--position: 1"><img src="images/DISCORD.jpg" alt=""></div>
@@ -70,6 +88,26 @@
             <div class="model"></div>
         </div>
     </div>
-    
+
+    <!-- Música oculta -->
+    <audio id="bg-music" src="music/Isabel LaRosa - eyes don't lie (Audio).mp3" autoplay loop></audio>
+
+    <!-- Botón -->
+    <button id="music-btn">⏸️ Pausa</button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('music-btn');
+
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                btn.textContent = "⏸️ Pausa";
+            } else {
+                music.pause();
+                btn.textContent = "▶️ Reproducir";
+            }
+        });
+    </script>
 </body>
 </html>
