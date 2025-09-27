@@ -62,12 +62,12 @@
             bottom: 20px;
             left: 20px;
             display: flex;
-            gap: 12px; /* Espacio entre iconos */
+            gap: 12px;
             z-index: 1000;
         }
 
         .social-icons img {
-            width: 36px;   /* Tamaño de icono */
+            width: 36px;
             height: 36px;
             object-fit: contain;
             cursor: pointer;
@@ -77,6 +77,41 @@
         .social-icons img:hover {
             transform: scale(1.2);
         }
+
+        /* --- Hover Zoom y Neón --- */
+        .slider .item img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+        }
+        .slider .item:hover img {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(140, 0, 255, 0.7), 
+                        0 0 40px rgba(140, 0, 255, 0.4);
+        }
+
+        /* --- Texto flotante estilo holográfico --- */
+        .slider .item {
+            position: relative;
+        }
+        .slider .item::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: bold;
+            color: transparent;
+            background: linear-gradient(90deg, #8c00ff, #00eaff, #ff00a6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.3s ease;
+        }
+        .slider .item:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -85,16 +120,16 @@
     <!-- Tu banner -->
     <div class="banner">
         <div class="slider" style="--quantity: 10">
-            <div class="item" style="--position: 1"><img src="images/DISCORD.jpg" alt=""></div>
-            <div class="item" style="--position: 2"><img src="images/GIT.jpg" alt=""></div>
-            <div class="item" style="--position: 3"><img src="images/SUKU.gif" alt=""></div>
-            <div class="item" style="--position: 4"><img src="images/SUNG.gif" alt=""></div>
-            <div class="item" style="--position: 5"><img src="images/dandadan-okarun.gif" alt=""></div>
-            <div class="item" style="--position: 6"><img src="images/giphy.gif" alt=""></div>
-            <div class="item" style="--position: 7"><img src="images/AKAZA.gif" alt=""></div>
-            <div class="item" style="--position: 8"><img src="images/6N8lQRG.gif" alt=""></div>
-            <div class="item" style="--position: 9"><img src="images/MELIODAe.gif" alt=""></div>
-            <div class="item" style="--position: 10"><img src="images/EREN.gif" alt=""></div>
+            <div class="item" style="--position: 1" data-label="Discord"><img src="images/DISCORD.jpg" alt=""></div>
+            <div class="item" style="--position: 2" data-label="GitHub"><img src="images/GIT.jpg" alt=""></div>
+            <div class="item" style="--position: 3" data-label="Sukuna"><img src="images/SUKU.gif" alt=""></div>
+            <div class="item" style="--position: 4" data-label="Sung"><img src="images/SUNG.gif" alt=""></div>
+            <div class="item" style="--position: 5" data-label="Okarun"><img src="images/dandadan-okarun.gif" alt=""></div>
+            <div class="item" style="--position: 6" data-label="Yagami"><img src="images/giphy.gif" alt=""></div>
+            <div class="item" style="--position: 7" data-label="Akaza"><img src="images/AKAZA.gif" alt=""></div>
+            <div class="item" style="--position: 8" data-label="Kaneki"><img src="images/6N8lQRG.gif" alt=""></div>
+            <div class="item" style="--position: 9" data-label="Meliodas"><img src="images/MELIODAe.gif" alt=""></div>
+            <div class="item" style="--position: 10" data-label="Eren"><img src="images/EREN.gif" alt=""></div>
         </div>
         <div class="content">
             <h1 data-content="D4NN4D ">

@@ -130,4 +130,40 @@
     .banner .content h1{
         font-size: 5em;
     }
+    
+}
+
+/* --- Hover Zoom y Neón --- */
+.slider .item img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+}
+.slider .item:hover img {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(140, 0, 255, 0.7), 
+                0 0 40px rgba(140, 0, 255, 0.4);
+}
+
+/* --- Texto flotante estilo holográfico --- */
+.slider .item {
+    position: relative;
+}
+.slider .item::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(90deg, #8c00ff, #00eaff, #ff00a6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.3s ease;
+}
+.slider .item:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
 }
