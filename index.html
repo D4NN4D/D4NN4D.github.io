@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>D4NN4D 🔥</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body{
+        body {
             background-color: #D2D2D2;
             background-image:
             repeating-linear-gradient(
@@ -21,8 +22,10 @@
                 to bottom, transparent 0 100px,
                 #25283b22 100px 101px
             );
+            overflow-x: hidden;
         }
-        body::before{
+
+        body::before {
             position: absolute;
             width: min(1400px, 90vw);
             top: 10%;
@@ -35,6 +38,58 @@
             background-repeat: no-repeat;
             background-position: top center;
             pointer-events: none;
+        }
+
+        /* --- EFECTO DE FUEGO AL INICIO --- */
+        #fire-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('https://i.imgur.com/BRpKjM5.gif') center/cover no-repeat;
+            animation: fadeOutFire 6s ease-in-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes fadeOutFire {
+            0% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        /* --- CHISPAS (BRASAS FLOTANTES) --- */
+        .spark {
+            position: fixed;
+            bottom: 0;
+            width: 3px; height: 3px;
+            background: orange;
+            border-radius: 50%;
+            animation: sparkFly 4s linear infinite;
+            opacity: 0.7;
+            z-index: 5;
+        }
+
+        @keyframes sparkFly {
+            from { transform: translateY(0) scale(1); opacity: 1; }
+            to { transform: translateY(-800px) scale(0.2); opacity: 0; }
+        }
+
+        /* --- TEXTO INCANDESCENTE --- */
+        .banner .content h1 {
+            font-family: 'ICA Rubrik';
+            font-size: 16em;
+            line-height: 1em;
+            color: #25283B;
+            position: relative;
+            text-shadow:
+                0 0 10px #ff4500,
+                0 0 40px #ff0000,
+                0 0 80px #ff6a00;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff4500, 0 0 40px #ff0000, 0 0 80px #ff6a00; }
+            to { text-shadow: 0 0 20px #ffa200, 0 0 60px #ff5100, 0 0 120px #ff0000; }
         }
 
         /* Botón de música */
@@ -85,11 +140,11 @@
         }
         .slider .item:hover img {
             transform: scale(1.15);
-            box-shadow: 0 0 20px rgba(140, 0, 255, 0.7), 
+            box-shadow: 0 0 20px rgba(140, 0, 255, 0.7),
                         0 0 40px rgba(140, 0, 255, 0.4);
         }
 
-        /* --- Texto flotante estilo holográfico --- */
+        /* --- Texto flotante holográfico --- */
         .slider .item {
             position: relative;
         }
@@ -112,12 +167,88 @@
             opacity: 1;
             transform: translateX(-50%) translateY(-5px);
         }
+
+        /* === Menú lateral === */
+        .menu-icon {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            font-size: 2em;
+            color: black; /* 🔥 AHORA NEGRO */
+            cursor: pointer;
+            z-index: 2000;
+            user-select: none;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 260px;
+            height: 100vh;
+            background: rgba(20, 20, 30, 0.96);
+            backdrop-filter: blur(8px);
+            transition: left 0.4s ease;
+            z-index: 1500;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .side-menu a, .side-menu button {
+            background: none;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .side-menu a:hover, .side-menu button:hover {
+            background: #00bfff;
+            color: #000;
+        }
+
+        /* === Texto blanco neón SOLO en móvil === */
+        @media (max-width: 767px) {
+            .banner .content .author p {
+                color: #ffffff !important;
+                text-shadow: 0 0 10px #ffffff,
+                             0 0 20px #00ffff,
+                             0 0 40px #00ffff,
+                             0 0 80px #00ffff;
+                animation: neon-glow 1.5s ease-in-out infinite alternate;
+            }
+
+            @keyframes neon-glow {
+                from { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+                to { text-shadow: 0 0 25px #00ffff, 0 0 45px #00ffff; }
+            }
+        }
     </style>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Tu banner -->
+    <!-- Menú lateral -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="side-menu" id="sideMenu">
+        <button id="musicToggle">⏸ Pausar música</button>
+        <a href="https://t.me/D4NN4D" target="_blank">💬 Telegram</a>
+        <a href="https://discordapp.com/users/_daniel7w7" target="_blank">🎧 Discord</a>
+    </div>
+
+    <!-- EFECTO DE FUEGO ENTRADA -->
+    <div id="fire-overlay"></div>
+
+    <!-- Banner principal -->
     <div class="banner">
         <div class="slider" style="--quantity: 10">
             <div class="item" style="--position: 1" data-label="Discord"><img src="images/DISCORD.jpg" alt=""></div>
@@ -132,49 +263,48 @@
             <div class="item" style="--position: 10" data-label="Eren"><img src="images/EREN.gif" alt=""></div>
         </div>
         <div class="content">
-            <h1 data-content="D4NN4D ">
-                D4NN4D 
-            </h1>
+            <h1 data-content="D4NN4D ">D4NN4D</h1>
             <div class="author">
                 <h2>DANDEV</h2>
                 <p><b>ABOUT ME</b></p>
-                <p>
-                    My name is DAN, I'm 18, I'm a programmer and graphic designer, do you need to know more about me?
-                </p>
+                <p>My name is DAN, I'm 18, I'm a programmer and graphic designer, do you need to know more about me?</p>
             </div>
             <div class="model"></div>
         </div>
     </div>
 
-    <!-- Música oculta -->
+    <!-- Música -->
     <audio id="bg-music" src="music/Isabel LaRosa - eyes don't lie (Audio).mp3" autoplay loop></audio>
-
-    <!-- Botón de música -->
-    <button id="music-btn">⏸️ Pausa</button>
-
-    <!-- Iconos sociales -->
-    <div class="social-icons">
-        <a href="https://t.me/D4NN4D" target="_blank">
-            <img src="https://ik.imagekit.io/utcwokv5j/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.webp?updatedAt=1758941147630" alt="Telegram">
-        </a>
-        <a href="https://discordapp.com/users/_daniel7w7" target="_blank">
-            <img src="https://ik.imagekit.io/utcwokv5j/discord-logo-discord-logo-transparent-discord-icon-transparent-free-free-png.webp?updatedAt=1758941140986" alt="Discord">
-        </a>
-    </div>
 
     <script>
         const music = document.getElementById('bg-music');
-        const btn = document.getElementById('music-btn');
+        const toggleBtn = document.getElementById('musicToggle');
+        const menu = document.getElementById('sideMenu');
+        let isPlaying = true;
 
-        btn.addEventListener('click', () => {
-            if (music.paused) {
-                music.play();
-                btn.textContent = "⏸️ Pausa";
-            } else {
+        function toggleMenu() {
+            menu.classList.toggle('open');
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            if (isPlaying) {
                 music.pause();
-                btn.textContent = "▶️ Reproducir";
+                toggleBtn.textContent = '▶ Reanudar música';
+            } else {
+                music.play();
+                toggleBtn.textContent = '⏸ Pausar música';
             }
+            isPlaying = !isPlaying;
         });
+
+        // Chispas flotantes
+        for (let i = 0; i < 30; i++) {
+            const spark = document.createElement('div');
+            spark.classList.add('spark');
+            spark.style.left = Math.random() * 100 + 'vw';
+            spark.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(spark);
+        }
     </script>
 </body>
 </html>
