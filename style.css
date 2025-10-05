@@ -53,19 +53,12 @@
     align-items: center;
     z-index: 1;
 }
-
-/* 🔹 Texto D4NN4D principal */
 .banner .content h1{
     font-family: 'ICA Rubrik';
-    font-size: clamp(4rem, 12vw, 16em); /* 🔥 Responsivo sin romper el estilo */
+    font-size: 16em;
     line-height: 1em;
     color: #25283B;
     position: relative;
-    text-shadow: 
-        0 0 20px #ff4400,
-        0 0 40px #ff2200,
-        0 0 80px #ff1100;
-    transition: font-size 0.3s ease;
 }
 .banner .content h1::after{
     position: absolute;
@@ -95,8 +88,6 @@
     background-position: top center;
     z-index: 1;
 }
-
-/* 🔹 Ajustes tablet */
 @media screen and (max-width: 1023px) {
     .banner .slider{
         width: 160px;
@@ -112,7 +103,7 @@
         text-align: center;
         width: 100%;
         text-shadow: 0 10px 20px #000;
-        font-size: clamp(3rem, 10vw, 7em); /* 🔥 fluido en tablet */
+        font-size: 7em;
     }
     .banner .content .author{
         color: #fff;
@@ -125,8 +116,6 @@
         padding: 0 30px;
     }
 }
-
-/* 🔹 Ajustes móviles */
 @media screen and (max-width: 767px) {
     .banner .slider{
         width: 100px;
@@ -138,24 +127,10 @@
             rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
             translateZ(180px);
     }
-
-    /* 🔥 Texto más balanceado en móvil */
     .banner .content h1{
-        font-size: clamp(2.5rem, 11vw, 5em);
-        line-height: 1.1;
-        text-align: center;
-        margin-top: 40px;
+        font-size: 5em;
     }
-
-    /* 🔹 Subir el menú un poco */
-    nav {
-        top: 8px !important;
-    }
-
-    .menu-container,
-    .navbar {
-        margin-top: -8px !important;
-    }
+    
 }
 
 /* --- Hover Zoom y Neón --- */
