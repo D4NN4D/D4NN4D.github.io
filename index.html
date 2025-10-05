@@ -40,22 +40,6 @@
             pointer-events: none;
         }
 
-        /* --- EFECTO DE FUEGO AL INICIO --- */
-        #fire-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: url('https://i.imgur.com/BRpKjM5.gif') center/cover no-repeat;
-            animation: fadeOutFire 6s ease-in-out forwards;
-            z-index: 9999;
-        }
-
-        @keyframes fadeOutFire {
-            0% { opacity: 1; }
-            80% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; }
-        }
-
         /* --- CHISPAS (BRASAS FLOTANTES) --- */
         .spark {
             position: fixed;
@@ -174,7 +158,7 @@
             top: 25px;
             left: 25px;
             font-size: 2em;
-            color: black; /* 🔥 AHORA NEGRO */
+            color: black; /* 🔥 ICONO NEGRO */
             cursor: pointer;
             z-index: 2000;
             user-select: none;
@@ -244,9 +228,6 @@
         <a href="https://t.me/D4NN4D" target="_blank">💬 Telegram</a>
         <a href="https://discordapp.com/users/_daniel7w7" target="_blank">🎧 Discord</a>
     </div>
-
-    <!-- EFECTO DE FUEGO ENTRADA -->
-    <div id="fire-overlay"></div>
 
     <!-- Banner principal -->
     <div class="banner">
